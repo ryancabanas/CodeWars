@@ -12,7 +12,12 @@ public class Main {
    * @param args the command line arguments
    */
   public static void main(String[] args) {
-//    Boolean test = Kata.compare(null, null);
-    System.out.println("this this".matches("[t]+"));
+    int result;
+    result = Arrays.findSmallest(new int[]{1, 2, 3}, "index");
+    System.out.println(result);
+    result = Arrays.findSmallest(new int[]{7, 12, 3, 2, 27}, "value");
+    System.out.println(result);
+    result = Arrays.findSmallest(new int[]{7, 12, 3, 2, 27}, "index");
+    System.out.println(result);
   }
 }
