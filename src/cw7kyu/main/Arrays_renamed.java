@@ -5,7 +5,7 @@
  */
 package cw7kyu.main;
 
-public class Arrays {
+public class Arrays_renamed {
 
   public static int findSmallest(final int[] numbers, final String toReturn) {
     int smallestValue = numbers[0];
