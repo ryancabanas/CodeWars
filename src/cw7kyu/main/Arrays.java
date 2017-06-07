@@ -5,24 +5,25 @@
  */
 package cw7kyu.main;
 
-import java.util.stream.IntStream;
-
 public class Arrays {
 
   public static int findSmallest(final int[] numbers, final String toReturn) {
-    IntStream daStream = java.util.Arrays.stream(numbers);
-    int smallestValue = 0;
+    int smallestValue = numbers[0];
     int smallestIndex = 0;
-    try {
-      smallestValue = daStream.min().getAsInt();
-      for (int i = 0; i < numbers.length; i++) {
-        if (numbers[i] == smallestValue) {
-          smallestIndex = i;
-          break;
-        }
+
+    for (int number : numbers) {
+      if (number < smallestValue){
+        smallestValue = number;
       }
-    } catch (Exception e) {
     }
+
+    for (int i = 0; i < numbers.length; i++) {
+      if (numbers[i] == smallestValue) {
+        smallestIndex = i;
+        break;
+      }
+    }
+
     if (toReturn.equalsIgnoreCase("index")) {
       return smallestIndex;
     } else if (toReturn.equalsIgnoreCase("value")) {
