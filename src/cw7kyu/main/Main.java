@@ -5,9 +5,6 @@
  */
 package cw7kyu.main;
 
-import java.util.Arrays;
-
-
 public class Main {
 
   /**
