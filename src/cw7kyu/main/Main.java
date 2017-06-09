@@ -11,6 +11,6 @@ public class Main {
    * @param args the command line arguments
    */
   public static void main(String[] args) {
-    System.out.println(MaxRotate.maxRot(56789));
+    System.out.println(EANValidator.validate("9783827317100"));
   }
 }
