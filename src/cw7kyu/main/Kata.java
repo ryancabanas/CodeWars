@@ -50,18 +50,103 @@ public class Kata {
       return t;
     }).collect(Collectors.joining(" "));
   }
+  
+  static String toLeetSpeak(final String speak) {
+    StringBuilder result = new StringBuilder();
+    String[] array = speak.split("");
+    
+    for (String s : array) {
+      switch (s) {
+        case "A":
+          result.append("@");
+          break;
+        case "B":
+          result.append("8");
+          break;
+        case "C":
+          result.append("(");
+          break;
+        case "D":
+          result.append("D");
+          break;
+        case "E":
+          result.append("3");
+          break;
+        case "F":
+          result.append("F");
+          break;
+        case "G":
+          result.append("6");
+          break;
+        case "H":
+          result.append("#");
+          break;
+        case "I":
+          result.append("!");
+          break;
+        case "J":
+          result.append("J");
+          break;
+        case "K":
+          result.append("K");
+          break;
+        case "L":
+          result.append("1");
+          break;
+        case "M":
+          result.append("M");
+          break;
+        case "N":
+          result.append("N");
+          break;
+        case "O":
+          result.append("0");
+          break;
+        case "P":
+          result.append("P");
+          break;
+        case "Q":
+          result.append("Q");
+          break;
+        case "R":
+          result.append("R");
+          break;
+        case "S":
+          result.append("$");
+          break;
+        case "T":
+          result.append("7");
+          break;
+        case "U":
+          result.append("U");
+          break;
+        case "V":
+          result.append("V");
+          break;
+        case "W":
+          result.append("W");
+          break;
+        case "X":
+          result.append("X");
+          break;
+        case "Y":
+          result.append("Y");
+          break;
+        case "Z":
+          result.append("2");
+          break;
+        case " ":
+          result.append(" ");
+          break;
+      }
+    }
+
+    return result.toString();
+  }
 }
 
-class TestId {
+class KataDemo {
   public static void main(String[] args) {
-    System.out.println(Kata.rakeGarden("gravel gravel gravel gravel gravel gravel gravel gravel "
-            + "gravel rock slug ant gravel gravel snail rock gravel gravel gravel gravel gravel "
-            + "gravel gravel slug gravel ant gravel gravel gravel gravel rock slug gravel gravel "
-            + "gravel gravel gravel snail gravel gravel rock gravel snail slug gravel gravel "
-            + "spider gravel gravel gravel gravel gravel gravel gravel gravel moss gravel gravel "
-            + "gravel snail gravel gravel gravel ant gravel gravel moss gravel gravel gravel "
-            + "gravel snail gravel gravel gravel gravel slug gravel rock gravel gravel rock "
-            + "gravel gravel gravel gravel snail gravel gravel rock gravel gravel gravel gravel "
-            + "gravel spider gravel rock gravel gravel"));
+     Kata.toLeetSpeak("HELLO WORLD");
   }
 }
