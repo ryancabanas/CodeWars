@@ -6,6 +6,8 @@
 package cw7kyu.main;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Kata {
   
@@ -36,5 +38,30 @@ public class Kata {
     results[2] = product;
         
     return results;
+  }
+  
+  public static String rakeGarden(String garden) {
+    String[] array = garden.split(" ");
+    
+    return Stream.of(array).map((t) -> {
+      if (!t.toLowerCase().equals("gravel") & !t.toLowerCase().equals("rock")) {
+        return "gravel";
+      }
+      return t;
+    }).collect(Collectors.joining(" "));
+  }
+}
+
+class TestId {
+  public static void main(String[] args) {
+    System.out.println(Kata.rakeGarden("gravel gravel gravel gravel gravel gravel gravel gravel "
+            + "gravel rock slug ant gravel gravel snail rock gravel gravel gravel gravel gravel "
+            + "gravel gravel slug gravel ant gravel gravel gravel gravel rock slug gravel gravel "
+            + "gravel gravel gravel snail gravel gravel rock gravel snail slug gravel gravel "
+            + "spider gravel gravel gravel gravel gravel gravel gravel gravel moss gravel gravel "
+            + "gravel snail gravel gravel gravel ant gravel gravel moss gravel gravel gravel "
+            + "gravel snail gravel gravel gravel gravel slug gravel rock gravel gravel rock "
+            + "gravel gravel gravel gravel snail gravel gravel rock gravel gravel gravel gravel "
+            + "gravel spider gravel rock gravel gravel"));
   }
 }
