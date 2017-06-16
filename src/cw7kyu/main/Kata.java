@@ -143,10 +143,25 @@ public class Kata {
 
     return result.toString();
   }
+  
+  public static Object[] mean(char[] lst) {
+    int sum = 0;
+    StringBuilder string = new StringBuilder(10);
+    
+    for (char c : lst) {
+      if (Character.isDigit(c)) {
+        sum += Integer.parseInt(String.valueOf(c));
+      } else {
+        string.append(c);
+      }
+    }
+    
+    return new Object[] {((double)sum) / 10, string.toString()};
+  }
 }
 
 class KataDemo {
   public static void main(String[] args) {
-     Kata.toLeetSpeak("HELLO WORLD");
+     Kata.mean(new char[] {'0', 'u', 'a', 'y', '0', 'a', '9', 'q', '3', 'v', 'g', '7', '6', '4', 'y', 'd', '8', '6', '0', 'd'});
   }
 }
