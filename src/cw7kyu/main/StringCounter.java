@@ -5,10 +5,14 @@
  */
 package cw7kyu.main;
 
-/**
- *
- * @author Ryan Cabanas
- */
-public class StringCounter {
+import java.util.stream.Stream;
+
+class StringCounter {
   
+  public static int stringCounter(String inputS, char charS){
+    return (int)Stream
+            .of(inputS.split(""))
+            .filter((t) -> t.equals(Character.toString(charS)))
+            .count();
+  }
 }
