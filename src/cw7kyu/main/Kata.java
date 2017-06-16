@@ -184,13 +184,11 @@ public class Kata {
   }
   
   public static int mod256WithoutMod(int number) {
-    boolean negative = (number < 0) ? true : false;
+    boolean negative = (number < 0);
     number = Math.abs(number);
-    
     while (number >= 256) {
       number -= 256;
     }
-    
     return (negative) ? -number : number;
   }
 }
