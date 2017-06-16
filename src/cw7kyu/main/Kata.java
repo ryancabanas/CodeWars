@@ -158,10 +158,34 @@ public class Kata {
     
     return new Object[] {((double)sum) / 10, string.toString()};
   }
+  
+  public static String replaceNth(String text, int n, char oldValue, char newValue) {
+    char[] array = text.toCharArray();
+    
+    int ovCount = (int)Stream
+            .of(text.split(""))
+            .filter((t) -> t.equals(Character.toString(oldValue)))
+            .count();
+    
+    if (n <= 0 || n > ovCount) {
+      return text;
+    }
+    
+    for (int i = 0, count = 0; i < array.length; i++) {
+      if (array[i] == oldValue) {
+        count++;
+        if (count % n == 0) {
+          array[i] = newValue;
+        }
+      }
+    }
+    
+    return String.valueOf(array);
+  }
 }
 
 class KataDemo {
   public static void main(String[] args) {
-     Kata.mean(new char[] {'0', 'u', 'a', 'y', '0', 'a', '9', 'q', '3', 'v', 'g', '7', '6', '4', 'y', 'd', '8', '6', '0', 'd'});
+    Kata.replaceNth("Vader said: No, I am your father!", 2, 'a', 'o');
   }
 }
