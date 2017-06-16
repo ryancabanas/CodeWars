@@ -182,10 +182,21 @@ public class Kata {
     
     return String.valueOf(array);
   }
+  
+  public static int mod256WithoutMod(int number) {
+    boolean negative = (number < 0) ? true : false;
+    number = Math.abs(number);
+    
+    while (number >= 256) {
+      number -= 256;
+    }
+    
+    return (negative) ? -number : number;
+  }
 }
 
 class KataDemo {
   public static void main(String[] args) {
-    Kata.replaceNth("Vader said: No, I am your father!", 2, 'a', 'o');
+    System.out.println(Kata.mod256WithoutMod(-255));
   }
 }
