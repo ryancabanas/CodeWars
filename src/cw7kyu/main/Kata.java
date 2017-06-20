@@ -6,7 +6,10 @@
 package cw7kyu.main;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Kata {
@@ -191,10 +194,40 @@ public class Kata {
     }
     return (negative) ? -number : number;
   }
+  
+  public static int[] sortByValueAndIndex(int[] array) {
+    int[] results = new int[array.length];
+    ArrayList<ArrayList<Integer>> outside = new ArrayList<>();
+    
+    for (int i = 0; i < array.length; i++) {
+      ArrayList<Integer> inside = new ArrayList<>();
+      inside.add(array[i]);
+      inside.add((i+1)*array[i]);
+      outside.add(inside);
+    }
+    
+    outside.sort((a, b) -> {
+      if (a.get(1) < b.get(1)) {
+        return -1;
+      } else if (Objects.equals(a.get(1), b.get(1))) {
+        return 0;
+      } else {
+        return 1;
+      }
+    });
+    
+    for (int i = 0; i < results.length; i++) {
+      results[i] = outside.get(i).get(0);
+      
+    }
+    
+    return results;
+  }
 }
 
 class KataDemo {
   public static void main(String[] args) {
-    System.out.println(Kata.mod256WithoutMod(-255));
+    Kata.sortByValueAndIndex(new int[] {26, 2, 3, 4, 5});
+    System.out.println("");
   }
 }
