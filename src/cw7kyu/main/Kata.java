@@ -8,6 +8,7 @@ package cw7kyu.main;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Kata {
@@ -242,6 +243,13 @@ public class Kata {
     }
     
     return result;
+  }
+  
+  public static int lostSheeps(
+          int[] fridayNightCounting, int[] saturdayNightCounting, int sheepsTotal) {
+    return sheepsTotal
+            - IntStream.of(fridayNightCounting).sum()
+            - IntStream.of(saturdayNightCounting).sum();
   }
   
 }
