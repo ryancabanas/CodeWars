@@ -138,9 +138,8 @@ public class Kata {
         case "Z":
           result.append("2");
           break;
-        case " ":
-          result.append(" ");
-          break;
+        default:
+          result.append(s);
       }
     }
 
