@@ -6,10 +6,8 @@
 package cw7kyu.main;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Kata {
@@ -221,11 +219,35 @@ public class Kata {
     
     return results;
   }
+
+  public static int sumTriangularNumbers(int n) {
+  int result = 0;
+    
+    if (n > 0) {
+      for (int i = 1; i <= n; i++) {
+        result += sumToN(i);
+      }
+    }
+    
+    return result;
+  }
+  
+  private static int sumToN(int n) {
+    int result = 0;
+    
+    if (n > 0) {
+      for (int i = 1; i <= n; i++) {
+        result += i;
+      }
+    }
+    
+    return result;
+  }
+  
 }
 
 class KataDemo {
   public static void main(String[] args) {
-    Kata.sortByValueAndIndex(new int[] {26, 2, 3, 4, 5});
-    System.out.println("");
+    System.out.println(Kata.sumTriangularNumbers(4));
   }
 }
