@@ -206,7 +206,7 @@ public class Kata {
       outside.add(inside);
     }
     
-    outside.sort((a, b) -> {
+    outside.sort((ArrayList<Integer> a, ArrayList<Integer> b) -> {
       if (a.get(1) < b.get(1)) {
         return -1;
       } else if (Objects.equals(a.get(1), b.get(1))) {
@@ -218,7 +218,6 @@ public class Kata {
     
     for (int i = 0; i < results.length; i++) {
       results[i] = outside.get(i).get(0);
-      
     }
     
     return results;
