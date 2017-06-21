@@ -6,6 +6,7 @@
 package cw7kyu.main;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -250,6 +251,14 @@ public class Kata {
     return sheepsTotal
             - IntStream.of(fridayNightCounting).sum()
             - IntStream.of(saturdayNightCounting).sum();
+  }
+  
+  public static String[] lineupStudents(String students) {     
+    String[] array = students.split(" ");
+    return Stream
+            .of(array)
+            .sorted(Comparator.reverseOrder())
+            .toArray(String[]::new);
   }
   
 }
