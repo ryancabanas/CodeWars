@@ -255,9 +255,25 @@ public class Kata {
   
   public static String[] lineupStudents(String students) {     
     String[] array = students.split(" ");
+    
     return Stream
             .of(array)
-            .sorted(Comparator.reverseOrder())
+            .sorted((String a, String b) -> {
+              if (a.length() < b.length()) {
+                return 1;
+              } else if (a.length() > b.length()) {
+                return -1;
+              } else {
+                for (int i = 0; i < a.length(); i++) {
+                  if (a.charAt(i) < b.charAt(i)) {
+                    return 1;
+                  } else if (a.charAt(i) > b.charAt(i)) {
+                    return -1;
+                  }
+                }
+                return 0;
+              }
+            })
             .toArray(String[]::new);
   }
   
@@ -265,6 +281,8 @@ public class Kata {
 
 class KataDemo {
   public static void main(String[] args) {
-    System.out.println(Kata.sumTriangularNumbers(4));
+    System.out.println(
+            String.join(" ", Kata.lineupStudents(
+                    "Tadashi Takahiro Takao Takashi Takayuki Takehiko Takeo Takeshi Takeshi")));
   }
 }
