@@ -5,10 +5,9 @@
  */
 package cw7kyu.main;
 
-/**
- *
- * @author Ryan Cabanas
- */
 public class Covfefe {
-  
+  public static String covfefe(String tweet) {
+    String newTweet = tweet.replaceAll("coverage", "covfefe");
+    return (tweet.equals(newTweet)) ? tweet + " covfefe" : newTweet;
+  }
 }
