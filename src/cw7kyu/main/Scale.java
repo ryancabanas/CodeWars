@@ -13,18 +13,12 @@ public class Scale {
     if (string.length() == 0) {
       return "";
     }
-    
-    String[] array = string.split("\n");
-    StringBuilder builder = new StringBuilder();
-    
-    for (String string1 : array) {
-      string1 = Scale.duplicateHorizontal(string1, h);
-      string1 = Scale.duplicateVertical(string1, v);
-      builder.append(string1);
-    }
-    
-    String result = builder.toString();
-    return result.substring(0, result.length()-1);
+    String result = Stream
+            .of(string.split("\n"))
+            .map((a) -> Scale.duplicateHorizontal(a, h))
+            .map((b) -> Scale.duplicateVertical(b, v))
+            .collect(Collectors.joining());
+    return result.substring(0, result.length()-1);    
   }
   
   static String duplicateVertical(String string, int count) {
