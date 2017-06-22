@@ -277,12 +277,26 @@ public class Kata {
             .toArray(String[]::new);
   }
   
+  static String alternateCase(final String string) {
+    if (string.length() == 0) {
+      return string;
+    }
+    
+    String[] array = string.split("");
+    for (int i = 0; i < array.length; i++) {
+      if (Character.isLowerCase(string.charAt(i))) {
+        array[i] = array[i].toUpperCase();
+      } else {
+        array[i] = array[i].toLowerCase();
+      }
+    }
+    return String.join("", array);
+  }
+  
 }
 
 class KataDemo {
   public static void main(String[] args) {
-    System.out.println(
-            String.join(" ", Kata.lineupStudents(
-                    "Tadashi Takahiro Takao Takashi Takayuki Takehiko Takeo Takeshi Takeshi")));
+    System.out.println(Kata.alternateCase("heLlO World"));
   }
 }
