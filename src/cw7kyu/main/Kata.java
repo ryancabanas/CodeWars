@@ -292,7 +292,7 @@ public class Kata {
     }
     return String.join("", array);
   }
-  
+
 }
 
 class KataDemo {
