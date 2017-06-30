@@ -29,9 +29,11 @@ public class Solution {
     
     return (!asc & !desc) ? "no" : (asc) ? "yes, ascending" : "yes, descending";
   }
+  
+  
 }
 
-class TestIt {
+class SolutionDemo {
   public static void main(String[] args) {
     System.out.println(Solution.isSortedAndHow(new int[] {15, 7, 3, -8}));
   }

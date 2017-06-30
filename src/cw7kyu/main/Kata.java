@@ -6,7 +6,9 @@
 package cw7kyu.main;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -293,10 +295,70 @@ public class Kata {
     return String.join("", array);
   }
 
+  public static String longestWord(String wordString) {
+    String[] words = wordString.split(" ");
+    String result = "";
+    for (String word : words) {
+      if (word.length() >= result.length()) {
+        result = word;
+      }
+    }
+    return result;
+  }
+  
+  public static int maxDiff(int[] lst) {
+    if (lst.length == 0) {
+      return 0;
+    }
+    
+    int maxVal = lst[0];
+    int minVal = lst[0];
+    for (int i = 1; i < lst.length; i++) {
+      if (lst[i] > maxVal) {
+        maxVal = lst[i];
+      }
+      if (lst[i] < minVal) {
+        minVal = lst[i];
+      }      
+    }
+    return maxVal - minVal;
+  }
+  
+  public static String describeList(final List list) {
+    return (list.isEmpty()) ? "empty" : (list.size() == 1) ? "singleton" : "longer";
+  }
+  
+  public static String[] sortCards (String[] cards) {
+    return Stream
+            .of(cards)
+            .mapToInt((x) -> {
+              switch (x.toUpperCase()) {
+                case "A": return 1;
+                case "T": return 10;
+                case "J": return 11;
+                case "Q": return 12;
+                case "K": return 13;
+                default: return Integer.parseInt(x);
+              }
+            })
+            .sorted()
+            .mapToObj((x) -> {
+              switch (x) {
+                case 1: return "A";
+                case 10: return "T";
+                case 11: return "J";
+                case 12: return "Q";
+                case 13: return "K";
+                default: return String.valueOf(x);
+              }
+            })
+            .toArray(String[]::new);
+  }
+  
 }
-
 class KataDemo {
   public static void main(String[] args) {
-    System.out.println(Kata.alternateCase("heLlO World"));
+    String[] test = Kata.sortCards(new String[] {"4", "A", "K", "J"});
+    System.out.println(String.join(", ", test));
   }
 }
