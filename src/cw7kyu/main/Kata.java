@@ -6,7 +6,7 @@
 package cw7kyu.main;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -138,9 +138,8 @@ public class Kata {
         case "Z":
           result.append("2");
           break;
-        case " ":
-          result.append(" ");
-          break;
+        default:
+          result.append(s);
       }
     }
 
@@ -222,11 +221,82 @@ public class Kata {
     
     return results;
   }
+
+  public static int sumTriangularNumbers(int n) {
+  int result = 0;
+    
+    if (n > 0) {
+      for (int i = 1; i <= n; i++) {
+        result += sumToN(i);
+      }
+    }
+    
+    return result;
+  }
+  
+  private static int sumToN(int n) {
+    int result = 0;
+    
+    if (n > 0) {
+      for (int i = 1; i <= n; i++) {
+        result += i;
+      }
+    }
+    
+    return result;
+  }
+  
+  public static int lostSheeps(
+          int[] fridayNightCounting, int[] saturdayNightCounting, int sheepsTotal) {
+    return sheepsTotal
+            - IntStream.of(fridayNightCounting).sum()
+            - IntStream.of(saturdayNightCounting).sum();
+  }
+  
+  public static String[] lineupStudents(String students) {     
+    String[] array = students.split(" ");
+    
+    return Stream
+            .of(array)
+            .sorted((String a, String b) -> {
+              if (a.length() < b.length()) {
+                return 1;
+              } else if (a.length() > b.length()) {
+                return -1;
+              } else {
+                for (int i = 0; i < a.length(); i++) {
+                  if (a.charAt(i) < b.charAt(i)) {
+                    return 1;
+                  } else if (a.charAt(i) > b.charAt(i)) {
+                    return -1;
+                  }
+                }
+                return 0;
+              }
+            })
+            .toArray(String[]::new);
+  }
+  
+  static String alternateCase(final String string) {
+    if (string.length() == 0) {
+      return string;
+    }
+    
+    String[] array = string.split("");
+    for (int i = 0; i < array.length; i++) {
+      if (Character.isLowerCase(string.charAt(i))) {
+        array[i] = array[i].toUpperCase();
+      } else {
+        array[i] = array[i].toLowerCase();
+      }
+    }
+    return String.join("", array);
+  }
+
 }
 
 class KataDemo {
   public static void main(String[] args) {
-    Kata.sortByValueAndIndex(new int[] {26, 2, 3, 4, 5});
-    System.out.println("");
+    System.out.println(Kata.alternateCase("heLlO World"));
   }
 }
