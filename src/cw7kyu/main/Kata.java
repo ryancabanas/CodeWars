@@ -6,8 +6,6 @@
 package cw7kyu.main;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -355,10 +353,48 @@ public class Kata {
             .toArray(String[]::new);
   }
   
+  public static int fusc(int n) {
+    if (n == 0 || n == 1) {
+      return n;
+    } else if ((n > 0) && (n & 1) == 0) {
+      return fusc(n / 2);
+    } else if ((n > 0) && (n & 1) == 1) {
+      return fusc((n - 1) / 2) + fusc((n + 1) / 2);      
+    } else {
+      return 0;
+    }
+  }
+  
+  public static int[][] cartesianNeighbor(int x, int y) {
+    int altX = x - 1;
+    int altY = y - 1;
+    
+    List<List<Integer>> list = new ArrayList<>();
+    for (int i = 0; i < 9; i++) {
+      if (i != 4) {
+        List<Integer> coordinate = new ArrayList<>();
+        coordinate.add(altX + (i / 3));
+        coordinate.add(altY + (i % 3));
+        list.add(coordinate);
+      }
+    }
+    
+    int[][] result = new int[8][2];
+    for (int i = 0; i < result.length; i++) {
+      result[i][0] = list.get(i).get(0);
+      result[i][1] = list.get(i).get(1);      
+    }
+    
+    return result;
+  }
+  
+  
+  
+  
 }
 class KataDemo {
   public static void main(String[] args) {
-    String[] test = Kata.sortCards(new String[] {"4", "A", "K", "J"});
-    System.out.println(String.join(", ", test));
+    int[][] result = Kata.cartesianNeighbor(5, 7);
+    System.out.println();
   }
 }
