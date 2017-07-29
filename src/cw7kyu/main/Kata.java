@@ -388,13 +388,28 @@ public class Kata {
     return result;
   }
   
-  
+  public static int findDeletedNumber(int[] arr, int[] mixedArr) {
+    if (arr.length != mixedArr.length) {
+      List<Integer> list = new ArrayList<>();
+      for (int i : mixedArr) {
+        list.add(i);
+      }
+      if (arr.length > 0) {
+        for (int i : arr) {
+          if (!list.contains(i)) {
+            return i;
+          }
+        }
+      }
+    }
+    return 0;
+  }
   
   
 }
 class KataDemo {
   public static void main(String[] args) {
-    int[][] result = Kata.cartesianNeighbor(5, 7);
-    System.out.println();
+    int result = Kata.findDeletedNumber(new int[]{1,2,3,4,5,6,7,8,9}, new int[]{3,2,4,6,7,8,1,9});
+    System.out.println(result);
   }
 }
